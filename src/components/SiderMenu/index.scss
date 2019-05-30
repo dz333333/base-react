@@ -1,0 +1,15 @@
+.menuTop{
+    background-color: '#002140';
+    height: 64px;
+    display: flex;
+    padding-left: 24px;
+    align-items: center;
+    img{
+        height: 32px;
+    }
+    h1{
+        color: white;
+        font-size: 20px;
+        margin-left: 12px;
+    }
+}
