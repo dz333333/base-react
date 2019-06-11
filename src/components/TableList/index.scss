@@ -5,4 +5,7 @@
     .antdTable{
         margin-top: 50px;
     }
+    .ant-table-body{
+        overflow-x: auto !important;
+    }
 }

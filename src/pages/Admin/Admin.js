@@ -118,11 +118,16 @@ class Admin extends Component {
       {
         title: '品牌ID',
         dataIndex: 'brand_id',
-        key: 'brand_id'
+        key: 'brand_id',
+        width:100,
+        show:true,
+        disabled:true
       }, {
         title: '品牌名称',
         dataIndex: 'brand_name',
         key: 'brand_name',
+        width:150,
+        show:true,
         render: (text, record) => (
           <span>
             <Link to='/admin/detail'>{record.brand_name}</Link>
@@ -131,26 +136,38 @@ class Admin extends Component {
       }, {
         title: '入驻门店',
         dataIndex: 'store_name',
-        key: 'store_name'
+        key: 'store_name',
+        width:150,
+        show:false
       }, {
         title: '品牌主体',
         dataIndex: 'brand_business',
-        key: 'brand_business'
+        key: 'brand_business',
+        width:150,
+        show:true
       }, {
         title: '品牌类别',
         dataIndex: 'brand_type',
-        key: 'brand_type'
+        key: 'brand_type',
+        width:150,
+        show:true
       }, {
         title: '入驻门店数量',
         dataIndex: 'owned_store_count',
-        key: 'owned_store_count'
+        key: 'owned_store_count',
+        width:150,
+        show:true
       }, {
         title: '创建时间',
         key: 'create_time',
-        dataIndex: 'create_time'
+        dataIndex: 'create_time',
+        width:150,
+        show:true
       }, {
         title: '操作',
         key: 'action',
+        width:150,
+        show:true,
         render: (text, record) => (
           <span></span>
         )

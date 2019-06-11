@@ -1,0 +1,32 @@
+.transfer{
+    display:flex;
+    justify-content: space-between;
+    .left ,.right{
+        width: 45%;
+        .ant-checkbox-group{
+            width: 100%;
+        }
+        .content{
+            
+            border:1px #ddd solid;
+            height: 260px;
+            overflow: auto;
+            .item{
+                width: 100%;
+                height: 40px;
+                border-bottom: 1px #ddd solid;
+                line-height: 40px;
+                padding: 0 20px;
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+                i{
+                    cursor: pointer;
+                }
+            }
+        }
+        :nth-child(3){
+            height: calc(260px - 32px)
+        }
+    }
+}
