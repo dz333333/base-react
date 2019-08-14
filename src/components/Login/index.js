@@ -51,12 +51,18 @@ class Login extends Component {
         this.setState({
           isLoading:true
         });
-        loginStore.login(values).then(()=>{
-          console.log('then')
+        loginStore.login(values).then((res)=>{
+          console.log('then',res)
           this.setState({
             isLoading:false
           });
-          this.props.history.push('home')
+          
+        })
+        .then(()=>{
+          loginStore.getUserInfo().then(()=>{
+            console.log('go')
+            this.props.history.push('home')
+          })
         })
         
       }
@@ -76,7 +82,7 @@ class Login extends Component {
           <div className='loginForm'>
             <Form className="login-form">
               <Form.Item>
-                {getFieldDecorator('phone_number', {
+                {getFieldDecorator('account', {
                   rules: [
                     {
                       required: true,
@@ -89,7 +95,7 @@ class Login extends Component {
                   placeholder="手机号"/>,)}
               </Form.Item>
               <Form.Item className='captcha'>
-                {getFieldDecorator('phone_code', {
+                {getFieldDecorator('password', {
                   rules: [
                     {
                       required: true,

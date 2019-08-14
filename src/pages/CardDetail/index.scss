@@ -1,0 +1,25 @@
+.detail{
+    display:flex;
+    width: 200px;
+    flex-wrap: wrap;
+    div{
+        width: 100px;
+    }
+}
+.card{
+   
+}
+.ant-card-head{
+   position: relative;
+   display: flex;
+   align-items: center;
+}
+.ant-card-head-wrapper{
+    position: absolute;
+    right: 24px;
+    width: 200px;
+    line-height: 100%;
+    .ant-card-extra{
+        padding: 0;
+    }
+}

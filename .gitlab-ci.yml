@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  {
+    "DOCKER_HUB_PATH":"ccr.ccs.tencentyun.com/buyfull",
+    "TEST_USER_HOST":"root@123.207.120.36",
+    "PRO_USER_HOST":"root@123.207.120.36"
+  }
+
+build_master:
+  stage: build
+  script:
+    - cnpm install
+    - npm run build:pro
+    - sudo docker build -t "${DOCKER_HUB_PATH}/${CI_PROJECT_NAME}:master" .
+    - sudo docker push "${DOCKER_HUB_PATH}/${CI_PROJECT_NAME}:master"
+  tags:
+    - node
+  only:
+    - master
+
+deploy_master:
+  stage: deploy
+  script:
+    - ssh ${PRO_USER_HOST} 'mkdir -p /data/react_web_example/logs/'
+    - scp ./docker/docker-compose.yml ${PRO_USER_HOST}:/data/${CI_PROJECT_NAME}/docker-compose.yml
+    - ssh ${PRO_USER_HOST} "docker stack deploy -c /data/${CI_PROJECT_NAME}/docker-compose.yml ${CI_PROJECT_NAME} --with-registry-auth"
+  tags:
+    - node
+  only:
+    - master

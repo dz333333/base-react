@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class DetailColumn extends Component {
   render() {
@@ -7,7 +7,7 @@ class DetailColumn extends Component {
         {this
           .props
           .columns
-          .map((item,index) => {
+          .map((item, index) => {
             return (
               <div className='columnItem' key={index}>
                 <span className="title">{item.name}</span>
@@ -16,7 +16,7 @@ class DetailColumn extends Component {
             )
 
           })
-}
+        }
       </div>
     );
   }

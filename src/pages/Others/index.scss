@@ -1,0 +1,79 @@
+.others {
+    display: flex;
+
+    .disappear,
+    .modal {
+        background-color: white;
+        flex: 1;
+
+        .title {
+            height: 50px;
+            line-height: 50px;
+            font-weight: 600;
+            padding-left: 30px;
+            border-bottom: 1px #ddd solid;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 24px;
+
+            button {
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    .disappear {
+        margin-right: 24px;
+    }
+}
+
+
+.ant-message {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    .ant-message-notice-content {
+        // .ant-message-custom-content {
+            padding: 0;
+
+            // .ant-message-custom-content {
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+
+            //     .anticon {
+            //         position: relative;
+            //         top: 1px;
+            //         margin-right: 16px;
+            //         font-size: 26px;
+            //     }
+            // }
+
+            .ant-message-success {
+                width: 220px;
+                height: 100px;
+                border: 1px #B7EB8F solid;
+                background-color: #F6FFED;
+                line-height: 100px;
+                font-size: 16px;
+            }
+
+            .ant-message-error {
+                width: 220px;
+                height: 100px;
+                border: 1px #FFA39E solid;
+                background-color: #FFF1F0;
+                line-height: 100px;
+                font-size: 16px;
+            }
+        // }
+
+
+    }
+}

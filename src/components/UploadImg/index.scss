@@ -1,0 +1,130 @@
+
+.activity {
+  display: flex;
+  justify-content: space-between;
+  .upload {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    opacity: 0;
+  }
+}
+.uploadedContentList{
+  display: flex;
+  flex-wrap: wrap;
+}
+.uploadedContent {
+  margin: 10px;
+  margin-left: 0;
+  width: 120px;
+  padding: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  .number{
+    height: 20px;
+  }
+  .uploadedImageWrap {
+    align-self: center;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    video{
+      width: 100px;
+    }
+    div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+  }
+  .uploadedFileName {
+    min-width: 120px;
+    align-self: center;
+    margin: auto 15px;
+    line-height: 1.2;
+  }
+  .uploadedClose {
+    line-height: 1.2;
+    text-align: right;
+    margin-bottom: 10px;
+    &:hover {
+      color: #999;
+    }
+    cursor: pointer;
+  }
+  .modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0.5;
+    i{
+      color: white;
+      cursor: pointer;
+      font-size: 22px;
+    }
+  }
+}
+
+.uploadTipTxt {
+  line-height: 32px;
+  color: #808080;
+}
+
+.previewImgModal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow-y: auto;
+  >div{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4;
+  }
+  >img{
+    position: absolute;
+    z-index: 11;
+    background-color: white;
+    left: 50%;
+  }
+  .smallImg{
+
+    top:50%;
+
+    transform:translateX(-50%) translateY(-50%);
+
+  }
+  .longImg{
+    top: 0;
+    transform:translateX(-50%);
+
+  }
+  .previewVideo{
+    position: absolute;
+    z-index: 11;
+    transform:translateX(-50%) translateY(-50%);
+    top: 50%;
+    
+  }
+}

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
 import { Table, Pagination, Button, Modal } from 'antd';
 import request from '../../utils/request';
 import SearchForm from '../SearchForm'
 import './index.scss'
 import Transfer from '../Transfer/Transfer';
 
-@withRouter
+
 class TableList extends Component {
   constructor(props) {
     super(props);
@@ -30,9 +29,12 @@ class TableList extends Component {
     const columns = []
     if (JSON.parse(localStorage.getItem(`${this.props.location.pathname}columns`))) {
       JSON.parse(localStorage.getItem(`${this.props.location.pathname}columns`)).forEach(item => {
-        if (item.show) {
-          columns.push(item)
-        }
+        this.props.columns.forEach(column => {
+          console.log(item, column.title, 'title')
+          if (column.key === item) {
+            columns.push(column)
+          }
+        })
       })
 
     } else {
@@ -49,13 +51,13 @@ class TableList extends Component {
     });
   };
 
-  getDataList = () => {
+  getDataList = (otherParams) => {
     const { params } = this.state
     const { url } = this.props
     this.setState({
       isLoading: true
     })
-    request({ url, method: 'get', params })
+    request({ url, method: 'get', params:{...params,...otherParams} })
       .then((res) => {
         if (res && res.status === 0) {
           this.setState({
@@ -67,17 +69,31 @@ class TableList extends Component {
       })
   }
 
+  // 搜索，对于一些需要拆分的字段需要特殊处理
   setSearchParams = (values) => {
     const { params } = this.state
 
     console.log(values, 'values')
     Object.keys(values).forEach(item => {
-      // if(values[item]){
-      params[item] = values[item]
-      // }
+      if (values[item] || values[item] === 0) {
+       
+        if (item === 'address') {
+          params.province_code = values[item][0]
+          params.city_code = values[item][1]
+        } else {
+          params[item] = values[item]
+        }
+      } else {
+        if (item === 'address') {
+          params.province_code =null
+          params.city_code = null
+        } 
+        params[item] = null
+      }
     })
     // 搜索从第一页开始
     params.page = 1
+    console.log(999,params)
     this.setState({
       params,
       currentPage: 1
@@ -119,25 +135,43 @@ class TableList extends Component {
       column.show && columns.push(column)
     })
 
-    localStorage.setItem(`${this.props.location.pathname}columns`, JSON.stringify(this.Transfer.state.choosedColumns))
+    localStorage.setItem(`${this.props.location.pathname}columns`, JSON.stringify(this.Transfer.state.choosedValueList))
     this.setState({
       columns,
       showSetColumns: false
     });
   }
+  // 结合本地储存更改columns的show属性
+  giveTransferColumns = () => {
+    const storageColumns = JSON.parse(localStorage.getItem(`${this.props.location.pathname}columns`))
+    storageColumns && this.props.columns.forEach(column => { column.show = false })
 
+    this.props.columns.forEach((column => {
+      storageColumns && storageColumns.forEach(item => {
+        if (column.key === item) {
+          column.show = true
+        }
+      })
+    }))
+    return this.props.columns
+  }
   render() {
-    const { rowKey, customConfig, searchType } = this.props
+    const { rowKey, customConfig, searchType, onChange } = this.props
     const { currentPage, pageSize, dataList, isLoading, showSetColumns, columns } = this.state
     console.log('render')
-    const storageColumns=localStorage.getItem(`${this.props.location.pathname}columns`)
-    const transferColumns=storageColumns?JSON.parse(storageColumns):this.props.columns
+
+    const transferColumns = this.giveTransferColumns()
 
     return (
       <div className='tableList'>
         {searchType && <SearchForm searchType={searchType} searchWords={this.setSearchParams}></SearchForm>}
-        {this.props.children}
-        <Button type='primary' style={{ marginLeft: '20px' }} onClick={this.showSetColumns}>显示/隐藏列</Button>
+        <div className='actionButton'>
+          {this.props.children}
+          <div>
+            <Button type='primary' style={{ marginLeft: '24px' }} onClick={this.showSetColumns}>显示/隐藏列</Button>
+            <Button type='primary' style={{ marginLeft: '24px' }} >下载</Button>
+          </div>
+        </div>
 
         <Modal
 
@@ -154,10 +188,10 @@ class TableList extends Component {
           pagination={false}
           columns={columns}
           rowKey={record => record[rowKey]}
-          dataSource={dataList && dataList.data}
+          dataSource={dataList && dataList.results}
           loading={isLoading}
           className='antdTable'
-
+          onChange={onChange}
 
           scroll={{ x: 'max-content' }}
           onRow={(record) => {

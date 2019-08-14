@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- **加粗**
+*斜体*
+***斜体加粗***
+~~删除线~~
+>引用
 
-## Available Scripts
+>引用
 
-In the project directory, you can run:
+---分隔线
 
-### `npm start`
+![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/
+u=702257389,1274025419&fm=27&gp=0.jpg "区块链")
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[百度](http://baidu.com)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+姓名|技能|排行
+--|:--:|--:
+刘备|哭|大哥
+关羽|打|二哥
+张飞|骂|三弟
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`daima`
 
-### `npm run build`
+```
+function fun(){
+    alert('ss')
+}
+``` -->
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- 1. 第一点
+2. 第二点
+- 第一点
+- 第二点 -->
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<!-- # h2 -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**项目描述**
 
-### `npm run eject`
+#### 项目启动
+1. npm run start:dev  开发环境
+2. npm run start:test 测试环境
+3. npm run build:pro 打包正式环境
+4. npm run build:test 打包测试环境
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### 项目结构
+- api文件一般写全局状态需要请求的api
+- asssets文件存放静态资源
+- components文件放公共组件
+- pages 放页面
+- routes 配置页面路由
+- store 全局状态管理
+- util 封装的axios 以及公共方法
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 已有组件
+1. tableList(列表)
+2. transfer(穿梭框)
+3. 简单的form表单
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### 权限管理
+    写在了store的login的逻辑处理
+### 示例可查看 权限为10 admin d的页面

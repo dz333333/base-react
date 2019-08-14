@@ -17,17 +17,28 @@ class LoginStore {
 
   @action login = (data) => {
     return new Promise((resolve, reject) => {
-      request({url: '/account/login', method: 'post', data}).then(response => {
-        if (response.status === 0) {
+      request({url: '/auth/login', method: 'post', data}).then(response => {
+        if (response) {
           // console.log(response, 'userI')
-          this.userInfo = response.data;
-          localStorage.setItem('token',response.data.auth_name)
+         
+          localStorage.setItem('token',response.data.auth_token)
+          
+          resolve(response)
+        }
+
+      })
+    })
+  }
+
+  @action getUserInfo = () => {
+    return new Promise((resolve, reject) => {
+      request({url: '/auth/user_info', method: 'get'}).then(response => {
+        if (response.status === 0) {
+          console.log(response, 'userI')
+          
+         
+          localStorage.setItem('permissions', JSON.stringify(response.data.permissions))
           localStorage.setItem('userInfo', JSON.stringify(response.data))
-          if (response.data.level === 10) {
-            localStorage.setItem('role', JSON.stringify('admin'))
-          } else if (response.data.level === 20) {
-            localStorage.setItem('role', JSON.stringify('manager'))
-          }
           resolve(response)
         }
 

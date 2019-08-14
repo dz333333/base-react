@@ -1,5 +1,5 @@
-.menuTop{
-    background-color: '#002140';
+.menuTop ,.collapsedMenuTop{
+    background-color: #002140;
     height: 64px;
     display: flex;
     padding-left: 24px;
@@ -12,4 +12,12 @@
         font-size: 20px;
         margin-left: 12px;
     }
+}
+.collapsedMenuTop{
+    width: 80px;
+}
+.sideMenu{
+    width: 220px;
+    position: fixed;
+    top: 0;
 }

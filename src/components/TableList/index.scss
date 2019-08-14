@@ -1,11 +1,21 @@
 .tableList{
-    margin: 24px 24px 0;
+    
     background-color: white;
-    padding: 30px;
+    padding: 24px;
     .antdTable{
-        margin-top: 50px;
+        margin-top: 12px;
     }
     .ant-table-body{
         overflow-x: auto !important;
     }
+    .actionButton{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+}
+
+.ant-modal-title{
+    font-weight: 600;
 }

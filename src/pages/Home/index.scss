@@ -1,4 +1,26 @@
 .homePage{
+    padding-top: 24px;
     width: 100%;
-    
+    .allSee{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+       
+        .item{
+            padding: 20px;
+            flex: 1;
+            background-color: white;
+            margin-right: 24px;
+            h3{
+                font-size: 30px;
+            }
+        }
+        :last-child{
+         margin-right: 0;   
+        }
+    }
+    .chart{
+        width: 100%;
+        background-color: white;
+    }
 }

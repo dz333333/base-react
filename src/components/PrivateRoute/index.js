@@ -5,7 +5,7 @@ class PrivateRoute extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAuthenticated: localStorage.getItem("role") ? true : false
+            isAuthenticated: localStorage.getItem("permissions") ? true : false
         }
     }
 

@@ -6,7 +6,8 @@ import {createHashHistory} from 'history';
 const history = createHashHistory();
 
 
-const BASE_API=process.env.REACT_APP_API_ENV==='production'?'https://yolo.euphonyqr.com/api/v1.0':'/api/v1.0'
+const BASE_API=process.env.REACT_APP_API_ENV==='production'?'https://example-test.euphonyqr.com/api/v1.0':'/api/v1.0'
+// const BASE_API=process.env.REACT_APP_API_ENV==='production'?'https://yolo.euphonyqr.com/api/v1.0':'http://localhost:8000'
 // 创建axios实例
 const service = axios.create({
   baseURL: BASE_API, // api的base_url

@@ -15,6 +15,7 @@ class Transfer extends Component {
         const { columns } = this.props
         this.props.onRef(this)
         console.log(columns, 'column')
+       
         const choosedList = []
         const choosedValueList = []
         columns.forEach(element => {
@@ -95,7 +96,7 @@ class Transfer extends Component {
                 <div className='left'>
 
                     <h3>请选择你想显示的列表字段</h3>
-                    <Search placeholder="搜索" onSearch={(value) => { this.searchColumn(value) }} enterButton
+                    <Search placeholder="搜索" onSearch={(value) => { this.searchColumn(value) }}
                     />
                     <div className="content">
 

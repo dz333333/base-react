@@ -1,0 +1,13 @@
+version: "3"
+services:
+  react:
+    image: ccr.ccs.tencentyun.com/buyfull/react_web_example:master
+    ports:
+     - 8160:80
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure

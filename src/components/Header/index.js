@@ -1,31 +1,38 @@
 import React from 'react';
 import './index.scss'
 import logoSrc from '../../assets/img/logo.png'
-import {Dropdown, Menu} from 'antd';
-import {withRouter} from "react-router-dom";
+import { Dropdown, Menu } from 'antd';
+import { withRouter } from "react-router-dom";
+
 
 
 class Header extends React.Component {
 
-  render(){
+  render() {
     const menu = (
-      <Menu className='loginOut' onClick={()=>{
+      <Menu className='loginOut' onClick={() => {
         this.props.history.push('/login')
         localStorage.clear()
-        }}>
+      }}>
         <Menu.Item>退出</Menu.Item>
       </Menu>
     );
     return (
-      <Dropdown overlay={menu}>
-        <div className='header'>
-          <img src={logoSrc} alt=""/>
-          <div className='name'>
-            测试姓名
+
+
+      <div className={`header ${this.props.headerWidth}`}>
+        {this.props.children}
+        <Dropdown overlay={menu}>
+          <div className='headerInfo'>
+            <img src={logoSrc} alt="" />
+            <div className='name'>
+              {JSON.parse(localStorage.getItem('userInfo')) && JSON.parse(localStorage.getItem('userInfo')).name}
+            </div>
           </div>
-        </div>
-      </Dropdown>
-  
+        </Dropdown>
+      </div>
+
+
     )
   }
 }

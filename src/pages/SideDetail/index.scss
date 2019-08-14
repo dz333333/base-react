@@ -1,0 +1,25 @@
+.sideContent{
+   
+    display: flex;
+    background-color: white;
+    .rightContent{
+        flex: 1;
+        margin: 30px;
+        h1{
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .listItem{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px #ddd solid;
+            padding: 20px 0;
+            .left{
+                :first-child{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
